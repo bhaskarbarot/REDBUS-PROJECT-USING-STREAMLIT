@@ -1,12 +1,23 @@
-import streamlit as st
-import pandas as pd
+#streamlit application creation code by bhaskar barot 
+"""
+1. streamlit and pandas importation
+2.load the csv data on streamlit application 
+3.create the main dashboart
+4.create 2 type of filters 1.governmebt bus, private bus
+                           2.routs like chennai to banglore
+5.in last added one summary table for customers who see the data
+6. dawnload csv file of data is added 
 
-def load_data():
+"""
+import streamlit as st # import streamlit
+import pandas as pd # import pandas
+
+def load_data(): # this is function which shows the loading the data in application 
     try:
-        # Load the CSV file
+        # Load the CSV file which i have 
         df = pd.read_csv(r'D:\guvi\REDBUS_PROJECT\PROJECT\bus_data.csv')
         
-        # Convert time columns to datetime with error handling
+        # Convert time columns to datetime with error handling if any erors..
         try:
             df['departing_time'] = pd.to_datetime(df['departing_time'], format='%H:%M').dt.time
         except:
@@ -21,7 +32,7 @@ def load_data():
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
         return None
-
+# this is the function which is use for bus dashboard
 def main():
     st.title("Bus Transportation Dashboard")
     
