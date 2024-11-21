@@ -1,5 +1,13 @@
 #step 1 scraping the data using selenium 
-
+"""
+1.set firefox webdriver
+2.function of : scroll page
+3.function of : extract text
+4.function of : star rating
+5.function of : bus details
+6.function of : seats available
+7.cenvert into csv file data fixed
+"""
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
@@ -199,14 +207,14 @@ class RedbusDetailedScraper:
 
     def save_to_csv(self, filename="bus_data.csv"):
         """Save scraped data to CSV file"""
-        # Combine both government and private buses
+        # Combine both government and private buses table 
         all_buses = self.govt_buses + self.private_buses
         
         if not all_buses:
             logging.warning("No data to save!")
             return
         
-        # Define CSV fields
+        # Define CSV catagories...
         fields = [
             'bus_category',
             'route_name',
@@ -257,7 +265,7 @@ def main():
             if len(scraper.govt_buses) >= 10:
                 break
         
-        # Save the data to CSV instead of text file
+        # Save the data to CSV filr
         scraper.save_to_csv()
         
         logging.info(f"\nScraping completed!")
